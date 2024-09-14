@@ -1,19 +1,23 @@
 {% extends '../_base.html' %}
 
 {% block main %}
-  <h1>Actualize seus dados</h1>
-  <form action="" method="post">
-    {% csrf_token %}
-
+  <main>
+    <h1>Actualize seus dados</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      <p>
+          <label for="id_username">Username: </label>
+          {{ form.username }}
+    
+      </p>
+      <p>
+          <label for="id_email">Email: </label>
+          {{ form.email }}</p>
+      <input type="submit" value="Atualizar" />
+    </form>
+    
     <p>
-        <label for="id_username">Username: </label>
-        {{ form.username }}
-        
+      <a href="{% url 'password_change' %}">Alterar senha</a>
     </p>
-    <p>
-        <label for="id_email">Email: </label>
-        {{ form.email }}</p>
-
-    <input type="submit" value="Atualizar" />
-  </form>
+  </main>
 {% endblock %}
