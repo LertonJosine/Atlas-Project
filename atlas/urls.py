@@ -7,4 +7,6 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+    path('menu/', include('cardapio.urls')), # menu app
+
 ]
