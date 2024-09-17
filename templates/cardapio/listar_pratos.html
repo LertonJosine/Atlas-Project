@@ -1,0 +1,10 @@
+{% block main %}
+  <main>
+    <h1>Atualizar Pratos</h1>
+    {% for prato in pratos %}
+      <p>
+        <a href="{% url 'actualizar_prato' prato.pk %}">{{ prato.nome }}</a>
+      </p>
+    {% endfor %}
+  </main>
+{% endblock %}

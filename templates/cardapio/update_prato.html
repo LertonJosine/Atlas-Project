@@ -1,0 +1,15 @@
+{% block main %}
+  <main>
+    <h1>Actualizar prato</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <h2>Igredientes</h2>
+      {{ igrediente_formset.management_form }}
+      {% for form in igrediente_formset %}
+        {{ form.as_p }}
+      {% endfor %}
+      <input type="submit" value="Enviar" />
+    </form>
+  </main>
+{% endblock %}

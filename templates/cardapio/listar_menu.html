@@ -1,0 +1,10 @@
+{% block main %}
+  <main>
+    <h1>Atualizar menu</h1>
+    {% for menu in menus %}
+      <p>
+        <a href="{% url 'update_menu' menu.pk %}">{{ menu.nome }}</a>
+      </p>
+    {% endfor %}
+  </main>
+{% endblock %}

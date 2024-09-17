@@ -19,12 +19,18 @@ class Prato(models.Model):
     nome = models.CharField(max_length=100)
     preco = models.FloatField()
     
+    def get_absolute_url(self):
+        return reverse("landing")
+    
     def __str__(self) -> str:
         return self.nome[:50]
     
 class Igrediente(models.Model):
     prato = models.ForeignKey(Prato, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
+
+    def get_absolute_url(self):
+            return reverse("landing")
 
     def __str__(self) -> str:
         return self.nome[:50]
