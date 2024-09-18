@@ -6,13 +6,13 @@ from django.forms import ModelForm, inlineformset_factory, BaseInlineFormSet
 class MenuForm(ModelForm):
     class Meta:
         model = Menu
-        fields = ['nome']
+        fields = ['nome', 'imagem']
 
 
 class PratoForm(ModelForm):
     class Meta:
         model = Prato
-        fields = ['menu', 'nome', 'preco']
+        fields = ['menu', 'nome', 'preco', 'imagem']
 
 
 
