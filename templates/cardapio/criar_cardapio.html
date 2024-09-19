@@ -1,7 +1,5 @@
 {% extends '../_base.html' %}
 
-
-
 {% block main %}
   <main id="main">
     <section id="contact" class="contact" >
@@ -22,10 +20,10 @@
               {% csrf_token %}
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="nome" class="form-control" maxlength="100" required="" id="id_nome" placeholder="Nome do cardapio" />
+                  <input type="text" name="nome" class="form-control" maxlength="100" required id="id_nome" placeholder="Nome do cardapio" />
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="file" class="form-control" name="imagem" accept="image/*" id="id_imagem" />
+                  <input type="file" class="form-control" name="imagem" accept="image/*" id="id_imagem" required/>
                 </div>
               </div>
 
@@ -52,7 +50,7 @@
                 </div>
               {% endfor %}
               <div class="text-center">
-                <button type="submit">Criar</button>
+                <button type="submit" onclick="menuFormValidation()">Criar</button>
               </div>
             </form>
           </div>
