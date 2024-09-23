@@ -1,10 +1,37 @@
-<form action="" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <h3>Pratos</h3>
-  {{ prato_formset.management_form }}
-  {% for form in prato_formset %}
-    {{ form.as_p }}
-  {% endfor %}
-  <input type="submit" value="Enviar" />
-</form>
+{% extends '../_base.html' %}
+
+{% block main %}
+  <main>
+    <div style="height: 100px;"></div>
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Menu</h2>
+          <p>Actualize o Menu</p>
+        </div>
+      </div>
+
+      <div class="container" data-aos="fade-up">
+        <div class="row mt-5">
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <form action="" method="post" class="php-email-form" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                  <h2>Pratos</h2>
+                  <p>Actualizar Pratos do Menu</p>
+                </div>
+              </div> {{ prato_formset.management_form }}
+              {% for form in prato_formset %}
+                {{ form.as_p }}
+              {% endfor %}
+              <input type="submit" value="Enviar" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Contact Section -->
+  </main>
+{% endblock %}

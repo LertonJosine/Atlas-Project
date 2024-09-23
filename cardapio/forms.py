@@ -17,5 +17,5 @@ class PratoForm(ModelForm):
 
 
 
-prato_formset = inlineformset_factory(parent_model=Menu, model=Prato, fields=['nome', 'preco'], extra=5)
+prato_formset = inlineformset_factory(parent_model=Menu, model=Prato, fields=['nome', 'preco', 'imagem'], extra=5)
 igrediente_formset = inlineformset_factory(parent_model=Prato, model=Igrediente, fields=['nome'], extra=5)
