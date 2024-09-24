@@ -1,10 +1,33 @@
+{% extends "../_base.html" %}
 {% block main %}
   <main>
-    <h1>Atualizar menu</h1>
-    {% for menu in menus %}
-      <p>
-        <a href="{% url 'update_menu' menu.pk %}">{{ menu.nome }}</a>
-      </p>
-    {% endfor %}
+    <div style="height: 100px;">
+
+    </div>
+    <section id="chefs" class="chefs">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Chefs</h2>
+          <p>Our Proffesional Chefs</p>
+        </div>
+
+        <div class="row">
+          {% for menu in menus %}
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="zoom-in" data-aos-delay="100">
+              <img src="{{menu.imagem.url}}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4><a href="{% url 'update_menu' menu.pk %}">{{menu.nome.capitalize}}</a></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+      </div>
+    </section><!-- End Chefs Section -->
+
   </main>
 {% endblock %}
