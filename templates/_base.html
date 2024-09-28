@@ -77,22 +77,47 @@
                   <a class="nav-link scrollto" href="#gallery">Gallery</a>
                 </li>
                 <li class="dropdown">
-                  <a href="#"><span>Gerir Menu</span> <i class="bi bi-chevron-down"></i></a>
+                  <a href="#"><span>Mais</span> <i class="bi bi-chevron-down"></i></a>
                   <ul>
-                    <li>
-                      <a href="{% url 'criar_menu' %}">Criar Menu</a>
-                    </li>
                     <li class="dropdown">
-                      
-                    <li>
-                      <a href="{% url 'criar_prato' %}">Criar Prato</a>
+                      <a href="#"><span>Conta</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                        {% if user.is_authenticated %}
+                          <li>
+                            <a href="{% url 'profile' user.pk %}">Perfil</a>
+                          </li>
+                          <li>
+                            
+                          </li>
+                        {% else %}
+                          <li>
+                            <a href="{% url 'signup' %}">Criar Conta</a>
+                          </li>
+                          <li>
+                            <a href="{% url 'login' %}">Entrar</a>
+                          </li>
+                        {% endif %}
+                      </ul>
                     </li>
-                    <li>
-                      <a href="{% url 'listar_menu' %}">Atualizar Menu</a>
+
+                    <li class="dropdown">
+                      <a href="#"><span>Gerir Menu</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                        <li>
+                          <a href="{% url 'criar_menu' %}">Criar Menu</a>
+                        </li>
+                        <li>
+                          <a href="{% url 'criar_prato' %}">Criar Prato</a>
+                        </li>
+                        <li>
+                          <a href="{% url 'listar_menu' %}">Actualizar Menu</a>
+                        </li>
+                        <li>
+                          <a href="{% url 'listar_pratos' %}">Actualizar Pratos</a>
+                        </li>
+                      </ul>
                     </li>
-                    <li>
-                      <a href="{% url 'listar_pratos' %}">Atualizar Pratos</a>
-                    </li>
+                    
                   </ul>
                 </li>
                 <li>
@@ -103,6 +128,7 @@
             </nav>
             <!-- .navbar -->
             <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Book a table</a>
+
           </div>
         </header>
         <!-- End Header -->
@@ -125,16 +151,13 @@
 
     {% endblock %}
     <!-- Vendor JS Files -->
-  <script src="{% static '/vendor/aos/aos.js' %} "></script>
-  <script src="{% static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
-  <script src="{% static '/vendor/glightbox/js/glightbox.min.js' %} "></script>
-  <script src="{% static '/vendor/isotope-layout/isotope.pkgd.min.js' %} "></script>
-  <script src="{% static '/vendor/swiper/swiper-bundle.min.js' %} "></script>
+    <script src="{% static '/vendor/aos/aos.js' %} "></script>
+    <script src="{% static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
+    <script src="{% static '/vendor/glightbox/js/glightbox.min.js' %} "></script>
+    <script src="{% static '/vendor/isotope-layout/isotope.pkgd.min.js' %} "></script>
+    <script src="{% static '/vendor/swiper/swiper-bundle.min.js' %} "></script>
 
-  <!-- Template Main JS File -->
-  <script src="{% static '/js/main.js' %} "></script>
-  <script src="{% static 'js/validation.js' %}"></script>
-  <script src="{% static 'js/formStyle.js' %}"></script>
-
+    <!-- Template Main JS File -->
+    <script src="{% static '/js/main.js' %} "></script>
   </body>
 </html>

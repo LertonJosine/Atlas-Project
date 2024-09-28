@@ -1,23 +1,36 @@
 {% extends '../_base.html' %}
-
+{% load static %}
 {% block main %}
   <main>
-    <h1>Actualize seus dados</h1>
-    <form action="" method="post">
-      {% csrf_token %}
-      <p>
-          <label for="id_username">Username: </label>
-          {{ form.username }}
-    
-      </p>
-      <p>
-          <label for="id_email">Email: </label>
-          {{ form.email }}</p>
-      <input type="submit" value="Atualizar" />
-    </form>
-    
-    <p>
-      <a href="{% url 'password_change' %}">Alterar senha</a>
-    </p>
+    <div style="height: 100px;"></div>
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Perfil</h2>
+          <p>Actualize os seus dados</p>
+        </div>
+      </div>
+
+      <div class="container" data-aos="fade-up">
+        <div class="row mt-5">
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <form action="" method="post" class="php-email-form" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <p>{{ form.email }}</p>
+              <p>{{ form.username }}</p>
+              
+              <input type="submit" value="Enviar" />
+            </form>
+           
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script src="{% static 'js/formStyle.js' %}"></script>
+ 
 {% endblock %}
+
+

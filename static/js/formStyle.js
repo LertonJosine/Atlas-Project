@@ -1,37 +1,86 @@
-let inputs = document.querySelectorAll('input[id*="preco"], input[id*="nome"], input[type="file"], select');
-inputs.forEach(input => input.classList.add('form-control'));
+(function () {
+    /**
+     * inputs - nodelist com todos os inputs do formulario
+     * 
+     * esta função adiciona a lista de classes dos inputs a classe form-control
+     */
+    let inputs = document.querySelectorAll('input');
+    for (let input of inputs) {
 
-inputs = document.querySelectorAll('input[id*="preco"]');
-inputs.forEach(elemento => elemento.setAttribute("placeholder", "Introduza o preco"));
+        // caso o input nao seja submit ou checkbox vai adicionar a classe
+        if (input.type != 'submit' && input.type != 'checkbox') {
+            input.classList.add('form-control')
+        } else if (input.type == 'checkbox') {
+            input.style.height = 'fit-content';
+        }
 
-inputs = document.querySelectorAll('input[id*="nome"]');
-inputs.forEach(elemento => elemento.setAttribute("placeholder", "Introduza o nome"));
-
-let clear_checkbox = document.querySelectorAll('input[type="checkbox"]');
-clear_checkbox.forEach(element => element.style.height = 'fit-content');
-
-let labels = document.getElementsByTagName("label");
-for (let label of labels) {
-    if (label.innerText == "Delete:") {
-        continue
-    } else {
-        label.style.display = 'none';
     }
+})();
+
+(function () {
+
+    /*
+    * esta função substitui o elemento input por button
+    */
+    let div = document.createElement('div');
+    div.classList.add('text-center');
+    let button = document.createElement('button');
+    button.type = 'submit';
+    button.innerText = 'Submit';
+
+    div.appendChild(button);
+
+    let input = document.querySelector('input[type="submit"]');
+    input.replaceWith(div);
 }
+)();
 
-let div = document.createElement('div');
-div.classList.add('text-center');
+(
+    function () {
+        /**
+         * Oculta todas as labels exepto as labels Delete
+         */
+        let labels = document.querySelectorAll('label');
+        for (let label of labels) {
+            if (label.innerText != 'Delete:') {
+                label.style.display = 'none';
 
-let button = document.createElement('button');
-button.innerText = "Enviar";
-button.setAttribute('type', 'submit');
-div.appendChild(button);
+            }
+        }
+    }
+)();
 
-let input_submit = document.querySelector('input[type="submit"]');
-input_submit.remove();
+(
+    function () {
+        /**
+         * definine o placeholder para os inputs nome, username, email e preço
+         */
+        let inputs_nome = document.querySelectorAll('input[id*="nome"]');
+        inputs_nome.forEach(element => {
+            element.setAttribute('placeholder', 'Introduza o nome');
+        });
+        let inputs_preco = document.querySelectorAll('input[id*="preco"]');
+        inputs_preco.forEach(element => element.setAttribute('placeholder', 'Introduza o preco'));
 
-let form = document.querySelector('form');
-form.appendChild(div);
+        let inputs_username = document.querySelectorAll('input[id*="username"]');
+        inputs_username.forEach(element => element.setAttribute('placeholder', 'Introduza o seu username'));
 
-let paragraph = document.querySelectorAll('p');
-paragraph.forEach(p=> p.classList.add("col-md-6", "form-group"));
+        let inputs_email = document.querySelectorAll('input[id*="email"]');
+        inputs_email.forEach(element => element.setAttribute('placeholder', 'Introduza o seu email'));
+
+        let input_password1 = document.querySelectorAll('input[id*="password1"');
+        input_password1.forEach(element => element.setAttribute('placeholder', 'Defina uma senha'));
+
+        let input_password2 = document.querySelectorAll('input[id*="password2"');
+        input_password2.forEach(element => element.setAttribute('placeholder', 'Confirme a senha'));
+
+    }
+)();
+
+(
+    function(){
+        /**
+         * 
+         */
+    }
+)();

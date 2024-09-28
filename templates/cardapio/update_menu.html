@@ -1,5 +1,5 @@
 {% extends '../_base.html' %}
-
+{% load static %}
 {% block main %}
   <main>
     <div style="height: 100px;"></div>
@@ -32,6 +32,7 @@
         </div>
       </div>
     </section>
-    <!-- End Contact Section -->
+      <script src="{% static 'js/formStyle.js' %}"></script>
+
   </main>
 {% endblock %}

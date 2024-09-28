@@ -1,5 +1,5 @@
 from .models import Menu, Prato, Igrediente
-from django.forms import ModelForm, inlineformset_factory, BaseInlineFormSet
+from django.forms import ModelForm, inlineformset_factory
 
 
 

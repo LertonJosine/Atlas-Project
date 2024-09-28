@@ -12,8 +12,9 @@ class CreateMenuView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request == 'POST':
-            context['prato_formset'] = prato_formset(self.request.POST, instance=self.object)
+
+        if self.request.method == 'POST':
+            context['prato_formset'] = prato_formset(self.request.POST, self.request.FILES, instance=self.object)
             
         else:
             context['prato_formset'] = prato_formset(instance=self.object)
@@ -23,11 +24,15 @@ class CreateMenuView(CreateView):
     def form_valid(self, form):
         context = self.get_context_data()
         prato_formset = context['prato_formset']
+        self.object = form.save()
         if prato_formset.is_valid():
-            self.object = form.save()
+            prato_formset.instance = self.object
             prato_formset.save()
-            
-        return super().form_valid(form)
+            return super().form_valid(form)
+
+        else:
+            return self.form_invalid(form)
+        
 
 
 
@@ -48,12 +53,15 @@ class CreatePratoView(CreateView):
     def form_valid(self, form):
         context = self.get_context_data()
         igrediente_formset = context['igrediente_formset']
+        self.object = form.save()
 
         if igrediente_formset.is_valid():
-            self.object = form.save()
+            igrediente_formset.instance = self.object
             igrediente_formset.save()
-            
-        return super().form_valid(form)
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)
+
 
         
 class ListarMenuView(ListView):
@@ -101,7 +109,7 @@ class UpdatePratoView(UpdateView):
     
     def get_context_data(self, **kwargs: Any) :
         context = super().get_context_data(**kwargs)
-        if self.request == 'POST':
+        if self.request.method == 'POST':
             context['igrediente_formset'] = igrediente_formset(self.request.POST, instance=self.object)
         else:
             context['igrediente_formset'] = igrediente_formset(instance=self.object)
@@ -111,9 +119,13 @@ class UpdatePratoView(UpdateView):
     def form_valid(self, form):
         context = self.get_context_data()
         igrediente_formset = context['igrediente_formset']
+        self.object = form.save()
+
         if igrediente_formset.is_valid():
-            self.object = form.save()
-            prato_formset.save()
-        return super().form_valid(form)
+            igrediente_formset.instance = self.object
+            igrediente_formset.save()
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)
     
 
